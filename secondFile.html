@@ -1,0 +1,24 @@
+<script>
+
+
+
+    let myPromise = new Promise((resolve) => {
+
+        setTimeout(() => {
+            resolve(
+                Math.random()
+            )
+        }, 3000)
+
+    })
+
+    myPromise.then((num) => {
+        console.log(`"myPromise was resolved" ${num}`);
+    })
+    myPromise.then((num) => {
+        console.log(`"myPromise was resolved" ${num}`);
+    })
+
+    console.log('finish')
+
+</script>

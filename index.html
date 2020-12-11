@@ -1,0 +1,31 @@
+<script>
+
+
+    let myPromise = new Promise((resolve) => {
+        setTimeout(() => {
+            // alert('Hello')
+        }, 2000)
+        resolve()
+    })
+
+    myPromise.then(() => {
+        console.log("myPromise was resolved");
+    })
+
+    const doAfter = (sec) => {
+        return new Promise((resolve) => {
+            setTimeout(() => {
+                resolve(Math.random())
+            }, sec * 1000)
+        })
+    }
+
+    let pr5 = doAfter(5)
+    let pr10 = doAfter(10)
+    let pr3 = doAfter(3)
+
+    pr5.then((num) => console.log('я сработал через 5 секунд', num));
+    pr3.then((num) => console.log('а я сработал через 3 секунд', num));
+    pr10.then((num) => console.log('я сработал через 10 секунд', num));
+
+</script>

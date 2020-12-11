@@ -1,0 +1,61 @@
+<script>
+
+    const doAfter = (sec) => {
+        return new Promise((resolve) => {
+            setTimeout(() => {
+                resolve(Math.random())
+            }, sec * 1000)
+        })
+    }
+    //
+    // let promise = doAfter(3);
+    // setTimeout(() => {
+    //     promise.then(() => {
+    //         console.log("myPromise was resolved");
+    //     })
+    // }, 5000)
+    //
+    // let promise3 = doAfter(3);
+    //
+    // promise3.then(() => console.log('я сработал через 3 секунд'));
+    // promise3.then(() => console.log('и я тоже следом сработал через 3 секунд'));
+    // promise3.then(() => console.log('и я'));
+
+    // let setIntPromise = new Promise((resolve => {
+    //     let i = 0
+    //     setInterval(() => {
+    //         i++
+    //         resolve(i) //один раз resolved
+    //         console.log(i)
+    //     }, 4000)
+    // }))
+    // setIntPromise.then((i) => console.log(i))
+
+    let pr1 = doAfter(3);
+    let pr2 = pr1.then((a) => {
+        console.log(a)
+        return a
+    })
+    pr2.then((b) => console.log(b));
+    // let something = pr2.then(() => console.log('Мой промис зарезолвился следом за pr1'));
+    // console.log(something)
+
+    doAfter(3)
+        .then((a) => {
+            console.log(a)
+            return a
+        })
+        .then((b) => {
+            console.log(b)
+            return b
+        })
+        .then((c) => console.log(c))
+
+    // let callback1 = () => console.log('Мой промис зарезолвился');
+    // let callback2 = () => console.log('Мой промис тоже зарезолвился следом');
+    //
+    // let pr1 = doAfter(3);
+    // let pr2 = pr1.then(callback1);
+    // pr2.then(callback2);
+
+</script>
