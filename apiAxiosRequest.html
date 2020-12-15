@@ -1,0 +1,34 @@
+<script src="axios.js"></script>
+<script src="api.js"></script>
+<!--<script src="api-15.js"></script>-->
+
+<script>
+
+    let pr = sumPromise => api.sendStudentsCountToItKamasutra(sumPromise)
+        .then(res => {
+            return res.data
+        })
+
+    let pr1 = api.getVacanciesCountFromMicrosoft()
+        .then(res => {
+            return res.data
+        })
+        .then(data => {
+            // console.log(data.vacancies)
+            return data.vacancies
+        })
+
+    let pr2 = api.getVacanciesCountFromGoogle()
+        .then(res => {
+            // console.log(res.data.vacancies)
+            return res.data.vacancies
+        })
+
+    Promise.all([pr1, pr2])
+        .then(arrPr => {
+            return arrPr.reduce((sum, num) => sum + num)
+        })
+        .then(sum => pr(sum))
+        .then(res => console.log(res))
+
+</script>
